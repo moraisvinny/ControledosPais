@@ -10,8 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.GridView;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -29,13 +29,14 @@ public class ListaAppsActivity extends Activity {
         setContentView(R.layout.activity_apps_list);
 
         loadApps();
-        loadListView();
+        loadGridView();
         addClickListener();
     }
 
+
     private PackageManager manager;
     private List<AppDetail> apps;
-    private ListView list;
+    private GridView list;
     private void loadApps(){
         manager = getPackageManager();
         apps = new ArrayList<AppDetail>();
@@ -52,8 +53,8 @@ public class ListaAppsActivity extends Activity {
             apps.add(app);
         }
     }
-    private void loadListView(){
-        list = (ListView)findViewById(R.id.apps_list);
+    private void loadGridView(){
+        list = (GridView)findViewById(R.id.grid_apps);
 
         ArrayAdapter<AppDetail> adapter = new ArrayAdapter<AppDetail>(this,
                 R.layout.list_item,
@@ -69,9 +70,6 @@ public class ListaAppsActivity extends Activity {
 
                 TextView appLabel = (TextView)convertView.findViewById(R.id.item_app_label);
                 appLabel.setText(apps.get(position).label);
-
-                TextView appName = (TextView)convertView.findViewById(R.id.item_app_name);
-                appName.setText(apps.get(position).name);
 
                 return convertView;
             }
