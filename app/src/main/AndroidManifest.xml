@@ -19,17 +19,14 @@
             <intent-filter>
 
                 <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.HOME"/>
-                <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.LAUNCHER" />
 
             </intent-filter>
         </activity>
-
-        <activity
-            android:name="com.estilotech.controledospais.ListaAppsActivity"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
-        </activity>
+        <activity android:name=".CadastroSenhaActivity"
+            android:label="Cadastro de Senha" />
+        <activity android:name=".ConfiguracoesActivity"
+            android:label="Configurações" />
 
     </application>
 

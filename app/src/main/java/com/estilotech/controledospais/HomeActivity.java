@@ -4,7 +4,9 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -22,6 +24,10 @@ import java.util.List;
 
 public class HomeActivity extends Activity {
 
+    private PackageManager manager;
+    private List<AppDetail> apps;
+    private GridView list;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,30 +37,35 @@ public class HomeActivity extends Activity {
         loadGridView();
         addClickListener();
     }
-
-    public void showApps(View v){
-        Intent i = new Intent(this, ListaAppsActivity.class);
-        startActivity(i);
-    }
-
-    private PackageManager manager;
-    private List<AppDetail> apps;
-    private GridView list;
     private void loadApps(){
-        manager = getPackageManager();
+//        manager = getPackageManager();
         apps = new ArrayList<AppDetail>();
+        AppDetail appSair = new AppDetail();
+        Drawable iconeSair = ContextCompat.getDrawable(this,R.drawable.icone_sair);
+        appSair.setLabel("Sair");
+        appSair.setName("Sair");
+        appSair.setIcon(iconeSair);
+        apps.add(appSair);
 
-        Intent i = new Intent(Intent.ACTION_MAIN, null);
-        i.addCategory(Intent.CATEGORY_LAUNCHER);
 
-        List<ResolveInfo> availableActivities = manager.queryIntentActivities(i, 0);
-        for(ResolveInfo ri:availableActivities){
-            AppDetail app = new AppDetail();
-            app.label = ri.loadLabel(manager);
-            app.name = ri.activityInfo.packageName;
-            app.icon = ri.activityInfo.loadIcon(manager);
-            apps.add(app);
-        }
+        AppDetail appConfig = new AppDetail();
+        Drawable iconeConfig = ContextCompat.getDrawable(this,R.drawable.icone_sett);
+        appConfig.setLabel("Configurações");
+        appConfig.setName("Config");
+        appConfig.setIcon(iconeConfig);
+        apps.add(appConfig);
+
+//        Intent i = new Intent(Intent.ACTION_MAIN, null);
+//        i.addCategory(Intent.CATEGORY_LAUNCHER);
+
+//        List<ResolveInfo> availableActivities = manager.queryIntentActivities(i, 0);
+//        for(ResolveInfo ri:availableActivities){
+//            AppDetail app = new AppDetail();
+//            app.label = ri.loadLabel(manager);
+//            app.name = ri.activityInfo.packageName;
+//            app.icon = ri.activityInfo.loadIcon(manager);
+//            apps.add(app);
+//        }
     }
     private void loadGridView(){
         list = (GridView)findViewById(R.id.grid_apps);
@@ -69,10 +80,10 @@ public class HomeActivity extends Activity {
                 }
 
                 ImageView appIcon = (ImageView)convertView.findViewById(R.id.item_app_icon);
-                appIcon.setImageDrawable(apps.get(position).icon);
+                appIcon.setImageDrawable(apps.get(position).getIcon());
 
                 TextView appLabel = (TextView)convertView.findViewById(R.id.item_app_label);
-                appLabel.setText(apps.get(position).label);
+                appLabel.setText(apps.get(position).getLabel());
 
                 return convertView;
             }
@@ -85,9 +96,23 @@ public class HomeActivity extends Activity {
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> av, View v, int pos, long id) {
-                Intent i = manager.getLaunchIntentForPackage(apps.get(pos).name.toString());
-                HomeActivity.this.startActivity(i);
+
+                AppDetail appDetail = apps.get(pos);
+                if(appDetail.getName().equals("Sair")) {
+                    HomeHelper homeHelper = new HomeHelper();
+                    homeHelper.sair(HomeActivity.this);
+                } else if(appDetail.getName().equals("Config")) {
+                    Intent intentConfig = new Intent(HomeActivity.this, ConfiguracoesActivity.class);
+                    HomeActivity.this.startActivity(intentConfig);
+
+                } else {
+                    Intent i = manager.getLaunchIntentForPackage(appDetail.getName().toString());
+                    HomeActivity.this.startActivity(i);
+                }
+
             }
         });
+
+
     }
 }

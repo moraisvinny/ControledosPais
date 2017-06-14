@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Controle dos Pais</string>
+    <string-array name="configs">
+        <item>Alterar Senha</item>
+        <item>Apps Liberados</item>
+    </string-array>
 </resources>
