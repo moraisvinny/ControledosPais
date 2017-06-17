@@ -3,7 +3,6 @@ package com.estilotech.controledospais;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.content.pm.ResolveInfo;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
@@ -15,6 +14,8 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.estilotech.controledospais.common.AppVO;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +26,7 @@ import java.util.List;
 public class HomeActivity extends Activity {
 
     private PackageManager manager;
-    private List<AppDetail> apps;
+    private List<AppVO> apps;
     private GridView list;
 
     @Override
@@ -39,8 +40,8 @@ public class HomeActivity extends Activity {
     }
     private void loadApps(){
 //        manager = getPackageManager();
-        apps = new ArrayList<AppDetail>();
-        AppDetail appSair = new AppDetail();
+        apps = new ArrayList<AppVO>();
+        AppVO appSair = new AppVO();
         Drawable iconeSair = ContextCompat.getDrawable(this,R.drawable.icone_sair);
         appSair.setLabel("Sair");
         appSair.setName("Sair");
@@ -48,7 +49,7 @@ public class HomeActivity extends Activity {
         apps.add(appSair);
 
 
-        AppDetail appConfig = new AppDetail();
+        AppVO appConfig = new AppVO();
         Drawable iconeConfig = ContextCompat.getDrawable(this,R.drawable.icone_sett);
         appConfig.setLabel("Configurações");
         appConfig.setName("Config");
@@ -60,7 +61,7 @@ public class HomeActivity extends Activity {
 
 //        List<ResolveInfo> availableActivities = manager.queryIntentActivities(i, 0);
 //        for(ResolveInfo ri:availableActivities){
-//            AppDetail app = new AppDetail();
+//            AppVO app = new AppVO();
 //            app.label = ri.loadLabel(manager);
 //            app.name = ri.activityInfo.packageName;
 //            app.icon = ri.activityInfo.loadIcon(manager);
@@ -70,7 +71,7 @@ public class HomeActivity extends Activity {
     private void loadGridView(){
         list = (GridView)findViewById(R.id.grid_apps);
 
-        ArrayAdapter<AppDetail> adapter = new ArrayAdapter<AppDetail>(this,
+        ArrayAdapter<AppVO> adapter = new ArrayAdapter<AppVO>(this,
                 R.layout.list_item,
                 apps) {
             @Override
@@ -97,16 +98,16 @@ public class HomeActivity extends Activity {
             @Override
             public void onItemClick(AdapterView<?> av, View v, int pos, long id) {
 
-                AppDetail appDetail = apps.get(pos);
-                if(appDetail.getName().equals("Sair")) {
+                AppVO appVO = apps.get(pos);
+                if(appVO.getName().equals("Sair")) {
                     HomeHelper homeHelper = new HomeHelper();
                     homeHelper.sair(HomeActivity.this);
-                } else if(appDetail.getName().equals("Config")) {
+                } else if(appVO.getName().equals("Config")) {
                     Intent intentConfig = new Intent(HomeActivity.this, ConfiguracoesActivity.class);
                     HomeActivity.this.startActivity(intentConfig);
 
                 } else {
-                    Intent i = manager.getLaunchIntentForPackage(appDetail.getName().toString());
+                    Intent i = manager.getLaunchIntentForPackage(appVO.getName().toString());
                     HomeActivity.this.startActivity(i);
                 }
 

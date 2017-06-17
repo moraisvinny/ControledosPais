@@ -2,6 +2,8 @@
     <string name="app_name">Controle dos Pais</string>
     <string-array name="configs">
         <item>Alterar Senha</item>
+        <item>Esqueci a Senha</item>
         <item>Apps Liberados</item>
+        <item>Faça um desenvolvedor feliz :)</item>
     </string-array>
 </resources>

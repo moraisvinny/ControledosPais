@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".CadastroSenhaActivity">
     <TextView
+        android:id="@+id/formulario_login_texto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Digite sua senha:"
@@ -20,21 +21,30 @@
         android:layout_height="wrap_content"
         android:text="Digite sua senha novamente:"
         android:textSize="20dp"
-        android:paddingTop="15dp"/>
+        android:layout_marginTop="15dp"/>
     <EditText
         android:id="@+id/formulario_login_senha_dois"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="numberPassword"/>
-    <ImageView
-        android:layout_width="wrap_content"
+
+    <TextView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="15dp"/>
+        android:text="Email para recuperação da senha:"
+        android:textSize="20dp"
+        android:layout_marginTop="10dp"/>
+    <EditText
+        android:id="@+id/formulario_login_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Salvar"
         android:onClick="salvarSenha"
+        android:layout_marginTop="10dp"
         />
 
 </LinearLayout>

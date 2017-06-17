@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ConfereSenhaActivity">
+
+    <TextView
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Por favor, informe sua senha:"
+        android:textSize="20dp"
+        android:layout_marginTop="15dp"/>
+    <EditText
+        android:id="@+id/confere_senha_senha"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:inputType="numberPassword"
+        android:layout_marginTop="25dp"/>
+
+    <Button
+        android:id="@+id/confere_senha_botao_ok"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="OK"
+        android:layout_marginTop="20dp"
+        android:onClick="conferirSenha"/>
+
+
+</LinearLayout>
