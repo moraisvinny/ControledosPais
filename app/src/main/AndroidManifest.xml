@@ -28,6 +28,8 @@
             android:label="Configurações" />
         <activity android:name=".ConfereSenhaActivity"
             android:label="Controle de Acesso"/>
+        <activity android:name=".AppsLiberadosActivity"
+            android:label="Aplicativos Liberados" />
     </application>
 
 </manifest>

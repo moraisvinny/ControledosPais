@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.support.annotation.NonNull;
+import android.util.Log;
 
 import com.estilotech.controledospais.common.SenhaVO;
 
@@ -13,28 +14,12 @@ import com.estilotech.controledospais.common.SenhaVO;
  * Created by vinic on 15/06/2017.
  */
 
-public class SenhaDAO extends SQLiteOpenHelper {
+public class SenhaDAO extends AbstractDAO {
 
-    private static final String NOME_BANCO = "ControlePais";
-    private static final int VERSAO_BANCO = 1;
     public static final String SELECT_FROM_SENHAS = "Select * from Senhas";
 
     public SenhaDAO(Context context) {
-        super(context, NOME_BANCO, null, VERSAO_BANCO);
-    }
-
-    @Override
-    public void onCreate(SQLiteDatabase db) {
-        String sql = "CREATE TABLE Senhas (id INTEGER PRIMARY KEY, senha INTEGER NOT NULL, email TEXT NOT NULL)";
-        db.execSQL(sql);
-
-    }
-
-    @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        String sql = "DROP TABLE IF EXISTS Senhas";
-        db.execSQL(sql);
-        onCreate(db);
+        super(context);
     }
 
     public void inserir(SenhaVO senhaVO) {

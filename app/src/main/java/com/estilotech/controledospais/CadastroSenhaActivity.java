@@ -1,5 +1,6 @@
 package com.estilotech.controledospais;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -48,7 +49,7 @@ public class CadastroSenhaActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_ok, menu);
         return super.onCreateOptionsMenu(menu);
     }
-    public void salvarSenha(MenuItem item) {
+    public void salvar(MenuItem item) {
         salvarSenha(new View(this));
     }
 
@@ -97,7 +98,8 @@ public class CadastroSenhaActivity extends AppCompatActivity {
             }
 
             Toast.makeText(this, "Senha salva com sucesso.", Toast.LENGTH_SHORT).show();
-            finish();
+            Intent intentConfig = new Intent(this, ConfiguracoesActivity.class);
+            startActivity(intentConfig);
         }
     }
 }

@@ -8,9 +8,20 @@ import android.graphics.drawable.Drawable;
 
 public class AppVO {
 
+
+
+    private boolean selecionado;
     private CharSequence label;
     private CharSequence name;
     private Drawable icon;
+
+    public boolean isSelecionado() {
+        return selecionado;
+    }
+
+    public void setSelecionado(boolean selecionado) {
+        this.selecionado = selecionado;
+    }
 
     public CharSequence getLabel() {
         return label;

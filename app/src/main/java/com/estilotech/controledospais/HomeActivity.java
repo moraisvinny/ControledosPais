@@ -3,6 +3,7 @@ package com.estilotech.controledospais;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
@@ -15,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.estilotech.controledospais.common.AppVO;
+import com.estilotech.controledospais.dao.AppDAO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +27,8 @@ import java.util.List;
 
 public class HomeActivity extends Activity {
 
+    public static final String APP_SAIR = "Sair";
+    public static final String APP_CONFIG = "Config";
     private PackageManager manager;
     private List<AppVO> apps;
     private GridView list;
@@ -39,7 +43,7 @@ public class HomeActivity extends Activity {
         addClickListener();
     }
     private void loadApps(){
-//        manager = getPackageManager();
+        manager = getPackageManager();
         apps = new ArrayList<AppVO>();
         AppVO appSair = new AppVO();
         Drawable iconeSair = ContextCompat.getDrawable(this,R.drawable.icone_sair);
@@ -52,32 +56,37 @@ public class HomeActivity extends Activity {
         AppVO appConfig = new AppVO();
         Drawable iconeConfig = ContextCompat.getDrawable(this,R.drawable.icone_sett);
         appConfig.setLabel("Configurações");
-        appConfig.setName("Config");
+        appConfig.setName(APP_CONFIG);
         appConfig.setIcon(iconeConfig);
         apps.add(appConfig);
 
-//        Intent i = new Intent(Intent.ACTION_MAIN, null);
-//        i.addCategory(Intent.CATEGORY_LAUNCHER);
+        Intent i = new Intent(Intent.ACTION_MAIN, null);
+        i.addCategory(Intent.CATEGORY_LAUNCHER);
+        AppDAO appDAO = new AppDAO(this);
+        List<String> appsBanco = appDAO.obterTodosAppsLiberados();
+        List<ResolveInfo> availableActivities = manager.queryIntentActivities(i, 0);
+        for(ResolveInfo ri:availableActivities){
 
-//        List<ResolveInfo> availableActivities = manager.queryIntentActivities(i, 0);
-//        for(ResolveInfo ri:availableActivities){
-//            AppVO app = new AppVO();
-//            app.label = ri.loadLabel(manager);
-//            app.name = ri.activityInfo.packageName;
-//            app.icon = ri.activityInfo.loadIcon(manager);
-//            apps.add(app);
-//        }
+            if(appsBanco.contains(ri.activityInfo.packageName.toString())) {
+                AppVO app = new AppVO();
+                app.setLabel(ri.loadLabel(manager));
+                app.setName(ri.activityInfo.packageName);
+                app.setIcon(ri.activityInfo.loadIcon(manager));
+                apps.add(app);
+            }
+
+        }
     }
     private void loadGridView(){
         list = (GridView)findViewById(R.id.grid_apps);
 
         ArrayAdapter<AppVO> adapter = new ArrayAdapter<AppVO>(this,
-                R.layout.list_item,
+                R.layout.icones_home,
                 apps) {
             @Override
             public View getView(int position, View convertView, ViewGroup parent) {
                 if(convertView == null){
-                    convertView = getLayoutInflater().inflate(R.layout.list_item, null);
+                    convertView = getLayoutInflater().inflate(R.layout.icones_home, null);
                 }
 
                 ImageView appIcon = (ImageView)convertView.findViewById(R.id.item_app_icon);
@@ -99,10 +108,10 @@ public class HomeActivity extends Activity {
             public void onItemClick(AdapterView<?> av, View v, int pos, long id) {
 
                 AppVO appVO = apps.get(pos);
-                if(appVO.getName().equals("Sair")) {
+                if(appVO.getName().equals(APP_SAIR)) {
                     HomeHelper homeHelper = new HomeHelper();
                     homeHelper.sair(HomeActivity.this);
-                } else if(appVO.getName().equals("Config")) {
+                } else if(appVO.getName().equals(APP_CONFIG)) {
                     Intent intentConfig = new Intent(HomeActivity.this, ConfiguracoesActivity.class);
                     HomeActivity.this.startActivity(intentConfig);
 

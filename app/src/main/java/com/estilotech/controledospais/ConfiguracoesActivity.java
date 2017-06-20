@@ -23,6 +23,8 @@ import com.estilotech.controledospais.mail.SendMail;
 public class ConfiguracoesActivity extends AppCompatActivity {
 
     ListView opcoes;
+    private Intent intentConfereSenha;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,21 +38,24 @@ public class ConfiguracoesActivity extends AppCompatActivity {
 
         } else {
             opcoes = (ListView) findViewById(R.id.activity_configuracoes_opcoes);
+            intentConfereSenha = new Intent(ConfiguracoesActivity.this,ConfereSenhaActivity.class);
 
             opcoes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                     if(ControleDosPaisEnum.CONFIGURACAO_ALTERAR_SENHA.getCodigo() == position) {
-                        Intent intentConfereSenha =
-                                new Intent(ConfiguracoesActivity.this,ConfereSenhaActivity.class);
                         ConfiguracoesActivity.this.startActivityForResult(
                                 intentConfereSenha,
-                                ControleDosPaisEnum.CONFIGURACAO_ALTERAR_SENHA.getCodigo());
+                                position);
                     } else if(ControleDosPaisEnum.CONFIGURACAO_ESQUECI_SENHA.getCodigo() == position) {
 
                         DialogHelper.criarDialogRecuperacaoSenha(ConfiguracoesActivity.this,senhaBanco);
 
+                    } else if(ControleDosPaisEnum.CONFIGURACAO_APPS_LIBERADOS.getCodigo() == position) {
+                        ConfiguracoesActivity.this.startActivityForResult(
+                                intentConfereSenha,
+                                position);
                     }
 
                 }
@@ -64,6 +69,9 @@ public class ConfiguracoesActivity extends AppCompatActivity {
         if(RESULT_OK == resultCode) {
             if(ControleDosPaisEnum.CONFIGURACAO_ALTERAR_SENHA.getCodigo() == requestCode) {
                 chamarCadastroSenha(false);
+            } else if(ControleDosPaisEnum.CONFIGURACAO_APPS_LIBERADOS.getCodigo() == requestCode) {
+                Intent intentAppsLiberados = new Intent(ConfiguracoesActivity.this, AppsLiberadosActivity.class);
+                ConfiguracoesActivity.this.startActivity(intentAppsLiberados);
             }
         }
 
