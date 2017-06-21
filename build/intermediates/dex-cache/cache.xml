@@ -3,39 +3,39 @@
 
     <item
         is-multidex="true"
-        jar="C:\Users\vinic\.gradle\caches\modules-2\files-2.1\com.sun.mail\android-mail\1.5.5\53a2f927b235acb565dbe9314ececfb7e6d43020\android-mail-1.5.5.jar"
+        jar="C:\Users\Vinny\AndroidStudioProjects\ControledosPais\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="ce07d4a5a8b2f95c19b7ddc9d20b1c52746863ae">
+        <dex dex="C:\Users\Vinny\AndroidStudioProjects\ControledosPais\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_bdf4eea59f38052f3c49d3e25a6ecd5af137f005\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Vinny\.gradle\caches\modules-2\files-2.1\com.sun.mail\android-mail\1.5.5\53a2f927b235acb565dbe9314ececfb7e6d43020\android-mail-1.5.5.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
         sha1="53a2f927b235acb565dbe9314ececfb7e6d43020">
-        <dex dex="C:\Users\vinic\AndroidStudioProjects\ControledosPais\app\build\intermediates\transforms\dex\debug\folders\1000\10\android-mail-1.5.5_cace45266f1c01f46dc4cb0aaddd4031e4ef828a\classes.dex" />
+        <dex dex="C:\Users\Vinny\AndroidStudioProjects\ControledosPais\app\build\intermediates\transforms\dex\debug\folders\1000\10\android-mail-1.5.5_d01827e04e0161d3e18300aa4cd8105d611c61bc\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\vinic\AndroidStudioProjects\ControledosPais\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jar="C:\Users\Vinny\AndroidStudioProjects\ControledosPais\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
         sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
-        <dex dex="C:\Users\vinic\AndroidStudioProjects\ControledosPais\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_76ed560d1bd20c1ac4033940b3c3d866414c8157\classes.dex" />
+        <dex dex="C:\Users\Vinny\AndroidStudioProjects\ControledosPais\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_e67dbdca282ee161a4cca07da3a2e35341b09df5\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\vinic\.gradle\caches\modules-2\files-2.1\com.sun.mail\android-activation\1.5.5\5442d5e05808145434b750c9f8a0c3f537383c5a\android-activation-1.5.5.jar"
+        jar="C:\Users\Vinny\.gradle\caches\modules-2\files-2.1\com.sun.mail\android-activation\1.5.5\5442d5e05808145434b750c9f8a0c3f537383c5a\android-activation-1.5.5.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
         sha1="5442d5e05808145434b750c9f8a0c3f537383c5a">
-        <dex dex="C:\Users\vinic\AndroidStudioProjects\ControledosPais\app\build\intermediates\transforms\dex\debug\folders\1000\10\android-activation-1.5.5_583138528db50a70c717efbfd8f9770273010394\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\vinic\AndroidStudioProjects\ControledosPais\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="cdc1114e03aac67ca8c8389c937f272d01d42ed9">
-        <dex dex="C:\Users\vinic\AndroidStudioProjects\ControledosPais\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_53c0f539b3727b8a18eb6f6afdf762fe9825736c\classes.dex" />
+        <dex dex="C:\Users\Vinny\AndroidStudioProjects\ControledosPais\app\build\intermediates\transforms\dex\debug\folders\1000\10\android-activation-1.5.5_f4e7f1c9227cc1e9685e643f46ca9b32bf4c7c4b\classes.dex" />
     </item>
 
 </items>

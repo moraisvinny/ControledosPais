@@ -125,4 +125,12 @@ public class HomeActivity extends Activity {
 
 
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        loadApps();
+        loadGridView();
+        addClickListener();
+    }
 }

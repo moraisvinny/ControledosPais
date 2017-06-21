@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -34,6 +35,8 @@ public class AppsLiberadosActivity extends AppCompatActivity{
     List<String> appsBanco = null;
     private ArrayAdapter<AppVO> adapter;
     private AppDAO appDAO;
+    private ListView listaAppsLiberados;
+    boolean[] checks;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -48,7 +51,7 @@ public class AppsLiberadosActivity extends AppCompatActivity{
     }
 
     private void carregarListView() {
-        ListView listaAppsLiberados = (ListView) findViewById(R.id.lista_apps_liberados);
+        listaAppsLiberados = (ListView) findViewById(R.id.lista_apps_liberados);
         adapter = new ArrayAdapter<AppVO>(this, R.layout.lista_apps_instalados,appsInstalados) {
 
             @NonNull
@@ -61,16 +64,13 @@ public class AppsLiberadosActivity extends AppCompatActivity{
 
                 CheckBox checkBox = (CheckBox) convertView.findViewById(R.id.app_instalado_liberado);
                 checkBox.setChecked(appsInstalados.get(position).isSelecionado());
-                checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                    @Override
-                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                        String launcher = appsInstalados.get(position).getName().toString();
 
-                        if(isChecked) {
-                            appDAO.inserir(launcher);
-                        } else {
-                            appDAO.remover(launcher);
-                        }
+                checkBox.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        CheckBox check = (CheckBox) v;
+                        appsInstalados.get(position).setSelecionado(check.isChecked());
                     }
                 });
 
@@ -89,6 +89,15 @@ public class AppsLiberadosActivity extends AppCompatActivity{
     }
 
     public void salvar(MenuItem menuItem) {
+
+        for(AppVO vo : appsInstalados) {
+            if(vo.isSelecionado()) {
+                appDAO.inserir(vo.getName().toString());
+            } else {
+                appDAO.remover(vo.getName().toString());
+            }
+        }
+
         Intent intentHome = new Intent(this, HomeActivity.class);
         startActivity(intentHome);
     }
@@ -103,21 +112,17 @@ public class AppsLiberadosActivity extends AppCompatActivity{
 
         appsBanco = appDAO.obterTodosAppsLiberados();
         boolean existe = false;
-        for(String appBanco : appsBanco) {
 
-            for(AppVO appVO : appsInstalados) {
-                existe = false;
-                if(appVO.getName().equals(appBanco)) {
-                    existe = true;
-                }
-                appVO.setSelecionado(existe);
-            }
+        for(AppVO appVO : appsInstalados) {
 
-            if(!existe) { // Se não existe mais na lista de apps instalados, é pq foi desinstalado
-                appDAO.remover(appBanco);
+            if(appsBanco.contains(appVO.getName().toString())) {
+                appVO.setSelecionado(true);
+            } else {
+                appDAO.remover(appVO.getName().toString());
             }
 
         }
+
     }
 
     private void obterAppsInstalados() {
