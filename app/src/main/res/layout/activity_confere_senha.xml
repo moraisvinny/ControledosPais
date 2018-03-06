@@ -18,7 +18,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:inputType="numberPassword"
-        android:layout_marginTop="25dp"/>
+        android:layout_marginTop="25dp"
+        android:focusableInTouchMode="true"/>
+
 
     <Button
         android:id="@+id/confere_senha_botao_ok"

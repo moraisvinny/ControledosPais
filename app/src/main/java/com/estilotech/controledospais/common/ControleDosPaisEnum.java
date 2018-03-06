@@ -6,9 +6,13 @@ package com.estilotech.controledospais.common;
 
 public enum ControleDosPaisEnum {
 
-    CONFIGURACAO_ALTERAR_SENHA(0),
-    CONFIGURACAO_ESQUECI_SENHA(1),
-    CONFIGURACAO_APPS_LIBERADOS(2);
+    CONFIGURACAO_APPS_LIBERADOS(0),
+    CONFIGURACAO_RESTAURAR_LAUNCHER(1),
+    CONFIGURACAO_ALTERAR_SENHA(2),
+    CONFIGURACAO_ESQUECI_SENHA(3),
+    CONFIGURACAO_DOACAO(4);
+
+
 
     private final int codigo;
     ControleDosPaisEnum(int position) {

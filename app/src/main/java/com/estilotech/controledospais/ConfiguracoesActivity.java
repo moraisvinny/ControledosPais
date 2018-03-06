@@ -3,6 +3,7 @@ package com.estilotech.controledospais;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -14,6 +15,7 @@ import com.estilotech.controledospais.common.ControleDosPaisEnum;
 import com.estilotech.controledospais.common.SenhaVO;
 import com.estilotech.controledospais.dao.SenhaDAO;
 import com.estilotech.controledospais.helper.DialogHelper;
+import com.estilotech.controledospais.helper.ResetLauncherHelper;
 import com.estilotech.controledospais.mail.SendMail;
 
 /**
@@ -56,6 +58,15 @@ public class ConfiguracoesActivity extends AppCompatActivity {
                         ConfiguracoesActivity.this.startActivityForResult(
                                 intentConfereSenha,
                                 position);
+                    } else if(ControleDosPaisEnum.CONFIGURACAO_RESTAURAR_LAUNCHER.getCodigo() == position) {
+                        ConfiguracoesActivity.this.startActivityForResult(
+                                intentConfereSenha,
+                                position);
+
+                    } else if(ControleDosPaisEnum.CONFIGURACAO_DOACAO.getCodigo() == position) {
+                        ConfiguracoesActivity.this.startActivityForResult(
+                                intentConfereSenha,
+                                position);
                     }
 
                 }
@@ -72,6 +83,14 @@ public class ConfiguracoesActivity extends AppCompatActivity {
             } else if(ControleDosPaisEnum.CONFIGURACAO_APPS_LIBERADOS.getCodigo() == requestCode) {
                 Intent intentAppsLiberados = new Intent(ConfiguracoesActivity.this, AppsLiberadosActivity.class);
                 ConfiguracoesActivity.this.startActivity(intentAppsLiberados);
+            } else if(ControleDosPaisEnum.CONFIGURACAO_RESTAURAR_LAUNCHER.getCodigo() == requestCode) {
+                ResetLauncherHelper resetLauncherHelper = new ResetLauncherHelper(ConfiguracoesActivity.this);
+                resetLauncherHelper.resetDefault();
+            } else if(ControleDosPaisEnum.CONFIGURACAO_DOACAO.getCodigo() == requestCode) {
+                String url = "http://estilotech.com/doacoes/";
+                Intent intentDoacao = new Intent(Intent.ACTION_VIEW);
+                intentDoacao.setData(Uri.parse(url));
+                startActivity(intentDoacao);
             }
         }
 

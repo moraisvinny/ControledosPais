@@ -26,18 +26,25 @@
         android:id="@+id/formulario_login_senha_dois"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:imeOptions="actionNext"
+        android:maxLines="1"
         android:inputType="numberPassword"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Email para recuperação da senha:"
+        android:imeOptions="actionNext"
+        android:maxLines="1"
         android:textSize="20dp"
         android:layout_marginTop="10dp"/>
     <EditText
         android:id="@+id/formulario_login_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        android:imeOptions="actionDone"
+        android:maxLines="1"
         />
     <Button
         android:layout_width="match_parent"
