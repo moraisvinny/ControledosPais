@@ -8,8 +8,11 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.webkit.ValueCallback;
+import android.webkit.WebView;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.estilotech.controledospais.common.ControleDosPaisEnum;
 import com.estilotech.controledospais.common.SenhaVO;
@@ -32,6 +35,13 @@ public class ConfiguracoesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_configuracoes);
 
+        final WebView webView = (WebView) findViewById(R.id.emailwv);
+        webView.getSettings().setJavaScriptEnabled(Boolean.TRUE);
+
+
+
+
+
         SenhaDAO senhaDAO = new SenhaDAO(ConfiguracoesActivity.this);
         final SenhaVO senhaBanco = senhaDAO.obter();
         if(senhaBanco == null) {
@@ -52,7 +62,7 @@ public class ConfiguracoesActivity extends AppCompatActivity {
                                 position);
                     } else if(ControleDosPaisEnum.CONFIGURACAO_ESQUECI_SENHA.getCodigo() == position) {
 
-                        DialogHelper.criarDialogRecuperacaoSenha(ConfiguracoesActivity.this,senhaBanco);
+                        DialogHelper.criarDialogRecuperacaoSenha(ConfiguracoesActivity.this,senhaBanco, webView);
 
                     } else if(ControleDosPaisEnum.CONFIGURACAO_APPS_LIBERADOS.getCodigo() == position) {
                         ConfiguracoesActivity.this.startActivityForResult(

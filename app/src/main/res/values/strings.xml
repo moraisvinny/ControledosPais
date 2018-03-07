@@ -1,5 +1,10 @@
 <resources>
     <string name="app_name">Controle dos Pais</string>
+    <string name="recupera_senha_pergunta">Deseja receber sua senha por email?</string>
+    <string name="recupera_senha_titulo">Recuperação de Senha</string>
+    <string name="recupera_senha_enviado">Email enviado</string>
+    <string name="sim">Sim</string>
+    <string name="cancelar">Cancelar</string>
     <string-array name="configs">
         <item>Apps Liberados</item>
         <item>Restaurar Tela Inicial</item>
