@@ -1,4 +1,4 @@
-package com.estilotech.controledospais;
+package com.moraisvinny.controledospais;
 
 import android.app.Activity;
 import android.content.Context;
@@ -13,25 +13,23 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
+import android.view.DragEvent;
 import android.view.Gravity;
-import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.estilotech.controledospais.common.AppVO;
-import com.estilotech.controledospais.common.SenhaVO;
-import com.estilotech.controledospais.dao.AppDAO;
-import com.estilotech.controledospais.dao.SenhaDAO;
-import com.estilotech.controledospais.helper.ResetLauncherHelper;
+import com.moraisvinny.controledospais.common.AppVO;
+import com.moraisvinny.controledospais.common.SenhaVO;
+import com.moraisvinny.controledospais.dao.AppDAO;
+import com.moraisvinny.controledospais.dao.SenhaDAO;
+import com.moraisvinny.controledospais.helper.ResetLauncherHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -70,12 +68,13 @@ public class HomeActivity extends Activity {
                 startActivityForResult(intent, OVERLAY_PERMISSION_CODE);
             } else {
                 preventStatusBarExpansion(this);
-                verificaPrimeiroAcesso();
+
             }
         } else {
             preventStatusBarExpansion(this);
-            verificaPrimeiroAcesso();
         }
+
+        verificaPrimeiroAcesso();
 
         setContentView(R.layout.activity_home);
 
@@ -138,7 +137,7 @@ public class HomeActivity extends Activity {
     }
     private void loadGridView(){
         list = (GridView)findViewById(R.id.grid_apps);
-
+        Log.i("HomeActivity", "Carregando GridView");
         ArrayAdapter<AppVO> adapter = new ArrayAdapter<AppVO>(this,
                 R.layout.icones_home,
                 apps) {
@@ -151,7 +150,7 @@ public class HomeActivity extends Activity {
                 ImageView appIcon = (ImageView)convertView.findViewById(R.id.item_app_icon);
                 appIcon.setImageDrawable(apps.get(position).getIcon());
 
-                TextView appLabel = (TextView)convertView.findViewById(R.id.item_app_label);
+                final TextView appLabel = (TextView)convertView.findViewById(R.id.item_app_label);
                 appLabel.setText(apps.get(position).getLabel());
 
                 return convertView;
@@ -194,7 +193,12 @@ public class HomeActivity extends Activity {
         windowManager = ((WindowManager) context.getApplicationContext().getSystemService(Context.WINDOW_SERVICE));
 
         WindowManager.LayoutParams localLayoutParams = new WindowManager.LayoutParams();
-        localLayoutParams.type = WindowManager.LayoutParams.TYPE_SYSTEM_ERROR;
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.N_MR1) {
+                localLayoutParams.type = 2038; //TYPE_APPLICATION_OVERLAY
+        } else {
+            localLayoutParams.type = WindowManager.LayoutParams.TYPE_SYSTEM_ERROR;
+        }
+
         localLayoutParams.gravity = Gravity.TOP;
         localLayoutParams.flags = WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE|WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL|WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN;
 

@@ -1,18 +1,13 @@
-package com.estilotech.controledospais.helper;
+package com.moraisvinny.controledospais.helper;
 
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.os.AsyncTask;
-import android.os.Build;
-import android.webkit.ValueCallback;
 import android.webkit.WebView;
 import android.widget.Toast;
 
-import com.estilotech.controledospais.ConfiguracoesActivity;
-import com.estilotech.controledospais.R;
-import com.estilotech.controledospais.common.SenhaVO;
-import com.estilotech.controledospais.mail.SendMail;
+import com.moraisvinny.controledospais.R;
+import com.moraisvinny.controledospais.common.SenhaVO;
 
 /**
  * Created by vinic on 16/06/2017.

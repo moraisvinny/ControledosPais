@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.estilotech.controledospais"
+    package="com.moraisvinny.controledospais"
     android:versionCode="1"
     android:versionName="ControleDosPais_1">
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
 
-        <activity android:name="com.estilotech.controledospais.HomeActivity"
+        <activity android:name="com.moraisvinny.controledospais.HomeActivity"
             android:label="Controle dos Pais"
             android:theme="@android:style/Theme.Wallpaper.NoTitleBar.Fullscreen"
             android:launchMode="singleTask"
@@ -30,7 +30,7 @@
         </activity>
 
         <activity
-            android:name=".ResetLauncherActivity"
+            android:name="com.moraisvinny.controledospais.ResetLauncherActivity"
             android:enabled="false">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -39,13 +39,13 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".CadastroSenhaActivity"
+        <activity android:name="com.moraisvinny.controledospais.CadastroSenhaActivity"
             android:label="Cadastro de Senha" />
-        <activity android:name=".ConfiguracoesActivity"
+        <activity android:name="com.moraisvinny.controledospais.ConfiguracoesActivity"
             android:label="Configurações" />
-        <activity android:name=".ConfereSenhaActivity"
+        <activity android:name="com.moraisvinny.controledospais.ConfereSenhaActivity"
             android:label="Controle de Acesso"/>
-        <activity android:name=".AppsLiberadosActivity"
+        <activity android:name="com.moraisvinny.controledospais.AppsLiberadosActivity"
             android:label="Aplicativos Liberados" />
     </application>
 

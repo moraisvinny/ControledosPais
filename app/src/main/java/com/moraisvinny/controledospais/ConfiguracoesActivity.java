@@ -1,25 +1,22 @@
-package com.estilotech.controledospais;
+package com.moraisvinny.controledospais;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.DragEvent;
 import android.view.View;
-import android.webkit.ValueCallback;
 import android.webkit.WebView;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
-import com.estilotech.controledospais.common.ControleDosPaisEnum;
-import com.estilotech.controledospais.common.SenhaVO;
-import com.estilotech.controledospais.dao.SenhaDAO;
-import com.estilotech.controledospais.helper.DialogHelper;
-import com.estilotech.controledospais.helper.ResetLauncherHelper;
-import com.estilotech.controledospais.mail.SendMail;
+import com.moraisvinny.controledospais.common.ControleDosPaisEnum;
+import com.moraisvinny.controledospais.common.SenhaVO;
+import com.moraisvinny.controledospais.dao.SenhaDAO;
+import com.moraisvinny.controledospais.helper.DialogHelper;
+import com.moraisvinny.controledospais.helper.ResetLauncherHelper;
 
 /**
  * Created by vinic on 14/06/2017.
@@ -38,10 +35,6 @@ public class ConfiguracoesActivity extends AppCompatActivity {
         final WebView webView = (WebView) findViewById(R.id.emailwv);
         webView.getSettings().setJavaScriptEnabled(Boolean.TRUE);
 
-
-
-
-
         SenhaDAO senhaDAO = new SenhaDAO(ConfiguracoesActivity.this);
         final SenhaVO senhaBanco = senhaDAO.obter();
         if(senhaBanco == null) {
@@ -55,7 +48,7 @@ public class ConfiguracoesActivity extends AppCompatActivity {
             opcoes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+                    
                     if(ControleDosPaisEnum.CONFIGURACAO_ALTERAR_SENHA.getCodigo() == position) {
                         ConfiguracoesActivity.this.startActivityForResult(
                                 intentConfereSenha,
@@ -97,7 +90,7 @@ public class ConfiguracoesActivity extends AppCompatActivity {
                 ResetLauncherHelper resetLauncherHelper = new ResetLauncherHelper(ConfiguracoesActivity.this);
                 resetLauncherHelper.resetDefault();
             } else if(ControleDosPaisEnum.CONFIGURACAO_DOACAO.getCodigo() == requestCode) {
-                String url = "http://estilotech.com/doacoes/";
+                String url = "http://moraisvinny.com/doacoes/";
                 Intent intentDoacao = new Intent(Intent.ACTION_VIEW);
                 intentDoacao.setData(Uri.parse(url));
                 startActivity(intentDoacao);

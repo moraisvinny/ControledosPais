@@ -1,12 +1,8 @@
-package com.estilotech.controledospais;
+package com.moraisvinny.controledospais;
 
-import android.app.ActivityManager;
 import android.app.IntentService;
-import android.content.ComponentName;
 import android.content.Intent;
 import android.support.annotation.Nullable;
-
-import java.util.List;
 
 /**
  * Created by vinic on 21/06/2017.

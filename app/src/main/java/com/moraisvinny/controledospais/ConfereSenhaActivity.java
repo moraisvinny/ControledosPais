@@ -1,4 +1,4 @@
-package com.estilotech.controledospais;
+package com.moraisvinny.controledospais;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -8,9 +8,9 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.estilotech.controledospais.common.SenhaVO;
-import com.estilotech.controledospais.dao.SenhaDAO;
-import com.estilotech.controledospais.helper.FocoETecladoHelper;
+import com.moraisvinny.controledospais.common.SenhaVO;
+import com.moraisvinny.controledospais.dao.SenhaDAO;
+import com.moraisvinny.controledospais.helper.FocoETecladoHelper;
 
 
 /**

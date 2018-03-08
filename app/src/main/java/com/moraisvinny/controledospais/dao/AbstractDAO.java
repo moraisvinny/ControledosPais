@@ -1,4 +1,4 @@
-package com.estilotech.controledospais.dao;
+package com.moraisvinny.controledospais.dao;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

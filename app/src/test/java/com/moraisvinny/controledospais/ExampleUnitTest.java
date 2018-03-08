@@ -1,4 +1,4 @@
-package com.estilotech.controledospais;
+package com.moraisvinny.controledospais;
 
 import org.junit.Test;
 

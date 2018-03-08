@@ -10,6 +10,6 @@
         <item>Restaurar Tela Inicial</item>
         <item>Alterar Senha</item>
         <item>Esqueci a Senha</item>
-        <item>Faça um desenvolvedor feliz :)</item>
+        <!--<item>Faça um desenvolvedor feliz :)</item> -->
     </string-array>
 </resources>

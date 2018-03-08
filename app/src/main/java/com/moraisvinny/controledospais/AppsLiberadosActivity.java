@@ -1,4 +1,4 @@
-package com.estilotech.controledospais;
+package com.moraisvinny.controledospais;
 
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -13,13 +13,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.estilotech.controledospais.common.AppVO;
-import com.estilotech.controledospais.dao.AppDAO;
+import com.moraisvinny.controledospais.common.AppVO;
+import com.moraisvinny.controledospais.dao.AppDAO;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,11 +1,11 @@
-package com.estilotech.controledospais.helper;
+package com.moraisvinny.controledospais.helper;
 
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 
-import com.estilotech.controledospais.ResetLauncherActivity;
+import com.moraisvinny.controledospais.ResetLauncherActivity;
 
 /**
  * Created by vinic on 22/06/2017.

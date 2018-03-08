@@ -1,14 +1,12 @@
-package com.estilotech.controledospais.dao;
+package com.moraisvinny.controledospais.dao;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 import android.support.annotation.NonNull;
-import android.util.Log;
 
-import com.estilotech.controledospais.common.SenhaVO;
+import com.moraisvinny.controledospais.common.SenhaVO;
 
 /**
  * Created by vinic on 15/06/2017.
