@@ -12,6 +12,8 @@ import android.webkit.WebView;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.moraisvinny.controledospais.common.ControleDosPaisEnum;
 import com.moraisvinny.controledospais.common.SenhaVO;
 import com.moraisvinny.controledospais.dao.SenhaDAO;
@@ -26,6 +28,7 @@ public class ConfiguracoesActivity extends AppCompatActivity {
 
     ListView opcoes;
     private Intent intentConfereSenha;
+    private AdView mAdView;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -75,6 +78,10 @@ public class ConfiguracoesActivity extends AppCompatActivity {
                 }
             });
         }
+
+        mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
     }
 
     @Override

@@ -25,6 +25,9 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 import com.moraisvinny.controledospais.common.AppVO;
 import com.moraisvinny.controledospais.common.SenhaVO;
 import com.moraisvinny.controledospais.dao.AppDAO;
@@ -54,6 +57,7 @@ public class HomeActivity extends Activity {
             | View.SYSTEM_UI_FLAG_IMMERSIVE;
     private static WindowManager windowManager;
     private static CustomViewGroup view;
+    //private AdView mAdView;
 
 
     @Override
@@ -81,6 +85,9 @@ public class HomeActivity extends Activity {
         loadApps();
         loadGridView();
         addClickListener();
+        MobileAds.initialize(this, "ca-app-pub-6184594478777267~2825713746");
+
+
     }
 
     private void verificaPrimeiroAcesso() {

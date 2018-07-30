@@ -2,12 +2,22 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <ListView
         android:id="@+id/activity_configuracoes_opcoes"
         android:layout_width="match_parent"
+        android:layout_height="460dp"
+        android:entries="@array/configs" />
+    <com.google.android.gms.ads.AdView
+        xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adView"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:entries="@array/configs"/>
-
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        ads:adSize="BANNER"
+        ads:adUnitId="ca-app-pub-6184594478777267/3543489929">
+    </com.google.android.gms.ads.AdView>
     <WebView
         android:id="@+id/emailwv"
         android:layout_width="wrap_content"
